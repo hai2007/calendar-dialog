@@ -11,6 +11,7 @@ export default function () {
             .header {
                 text-align: center;
                 margin-bottom: 10px;
+                white-space: nowrap;
                 &>button {
                     border: none;
                     background-color: transparent;

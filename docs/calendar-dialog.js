@@ -4,12 +4,12 @@
  *
  * author 你好2007 < https://hai2007.gitee.io/sweethome >
  *
- * version 0.1.1
+ * version 0.1.2
  *
  * Copyright (c) 2021 hai2007 走一步，再走一步。
  * Released under the MIT license
  *
- * Date:Wed Dec 01 2021 17:56:17 GMT+0800 (中国标准时间)
+ * Date:Wed Dec 01 2021 19:43:56 GMT+0800 (GMT+08:00)
  */
 (function () {
   'use strict';
@@ -722,7 +722,7 @@
   function useStyle () {
     var styleElement = document.createElement('style');
     var head = document.head || document.getElementsByTagName('head')[0];
-    styleElement.innerHTML = scssToCss("\n        #calendar-dialog{\n            font-family: serif;\n            .header {\n                text-align: center;\n                margin-bottom: 10px;\n                &>button {\n                    border: none;\n                    background-color: transparent;\n                    cursor: pointer;\n                    height: 20px;\n                    vertical-align: top;\n                    font-weight: 800;\n                    font-size: 20px;\n                    line-height: 20px;\n                }\n                &>h3 {\n                    display: inline-block;\n                    width: 180px;\n                    cursor: pointer;\n                }\n            }\n            .title>span,\n            .items>span {\n                display: inline-block;\n                width: 35px;\n                height: 35px;\n                line-height: 35px;\n                text-align: center;\n            }\n            .gray {\n                color: #c2bbbb;\n            }\n            [tag]{\n                cursor: pointer;\n                &:hover{\n                    background-color: #f1ecec;\n                    color: white;\n                }\n            }\n            .items{\n                &.dayview>span {\n                    width: 35px;\n                }\n\n                &.monthview>span {\n                    width: 60px;\n                    line-height: 60px;\n                    height: 60px;\n                }\n\n                &.yearview>span {\n                    width: 80px;\n                    line-height: 60px;\n                    height: 60px;\n                }\n            }\n        }\n        #calendar-dialog_close{\n            &:hover{\n                color: #211e1e !important;\n            }\n        }\n    ");
+    styleElement.innerHTML = scssToCss("\n        #calendar-dialog{\n            font-family: serif;\n            .header {\n                text-align: center;\n                margin-bottom: 10px;\n                white-space: nowrap;\n                &>button {\n                    border: none;\n                    background-color: transparent;\n                    cursor: pointer;\n                    height: 20px;\n                    vertical-align: top;\n                    font-weight: 800;\n                    font-size: 20px;\n                    line-height: 20px;\n                }\n                &>h3 {\n                    display: inline-block;\n                    width: 180px;\n                    cursor: pointer;\n                }\n            }\n            .title>span,\n            .items>span {\n                display: inline-block;\n                width: 35px;\n                height: 35px;\n                line-height: 35px;\n                text-align: center;\n            }\n            .gray {\n                color: #c2bbbb;\n            }\n            [tag]{\n                cursor: pointer;\n                &:hover{\n                    background-color: #f1ecec;\n                    color: white;\n                }\n            }\n            .items{\n                &.dayview>span {\n                    width: 35px;\n                }\n\n                &.monthview>span {\n                    width: 60px;\n                    line-height: 60px;\n                    height: 60px;\n                }\n\n                &.yearview>span {\n                    width: 80px;\n                    line-height: 60px;\n                    height: 60px;\n                }\n            }\n        }\n        #calendar-dialog_close{\n            &:hover{\n                color: #211e1e !important;\n            }\n        }\n    ");
     styleElement.setAttribute('type', 'text/css');
     head.appendChild(styleElement);
   }

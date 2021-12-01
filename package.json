@@ -1,6 +1,6 @@
 {
   "name": "calendar-dialog",
-  "version": "0.1.0-alpha.0",
+  "version": "0.1.0",
   "description": "一个日历弹框，可以通过此日历组件选择日期、时间和标记日程等，支持多种主体，可配置化的设计思想；代码采用模块化开发，易于理解，可以很方便的进行二次开发。 ",
   "main": "dist/calendar-dialog.min.js",
   "scripts": {
@@ -33,6 +33,7 @@
     "terser": "^4.1.2"
   },
   "dependencies": {
+    "@hai2007/algorithm": "^0.7.2",
     "@hai2007/browser": "^0.2.0",
     "@hai2007/tool": "^1.0.0"
   }

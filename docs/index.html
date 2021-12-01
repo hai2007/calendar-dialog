@@ -2,22 +2,132 @@
 <html lang="zh-cn">
 
 <head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>calendar-dialog | 一个日历弹框，可以通过此日历组件选择日期、时间和标记日程等，支持多种主体，可配置化的设计思想；代码采用模块化开发，易于理解，可以很方便的进行二次开发。</title>
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@hai2007/style@0/normalize.css">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@hai2007/style@0/doc-view.css">
-  <style>
-    body {
-      width: 900px;
-      margin: auto;
-      background-color: beige;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>calendar-dialog | 一个日历弹框，可以通过此日历组件选择日期、时间和标记日程等，支持多种主体，可配置化的设计思想；代码采用模块化开发，易于理解，可以很方便的进行二次开发。</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@hai2007/style@0/normalize.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@hai2007/style@0/doc-view.css">
+    <script src="./calendar-dialog.js"></script>
+    <style>
+        body {
+            width: 900px;
+            margin: auto;
+            background-color: beige;
+        }
+
+        .fork {
+            user-select: none;
+            position: fixed;
+            transform: rotate(45deg);
+            line-height: 1.6em;
+            transform-origin: 150px 23px;
+            text-align: center;
+            font-family: sans-serif;
+            display: inline-block;
+            top: 60px;
+            right: -77px;
+            width: 300px;
+            background-color: #f44336;
+            outline: 4px solid #f44336;
+            border: 2px dashed #ffffff;
+            color: #ffffff;
+        }
+
+        header {
+            text-align: center;
+            font-size: 30px;
+            font-family: fantasy;
+            margin-top: 20px;
+        }
+
+        header>h2 {
+            font-size: 14px;
+            margin: 10px 0;
+        }
+
+        pre {
+            margin: 20px;
+            padding: 10px;
+            outline: 1px solid gray;
+        }
+
+        input {
+            cursor: pointer;
+            padding: 5px 10px;
+            font-size: 16px;
+        }
+    </style>
 </head>
 
-<body>
+<body class='doc-view'>
+
+    <a href="https://github.com/hai2007/calendar-dialog" class='fork' target="_blank">Fork Me on Github</a>
+
+    <header>
+        calendar-dialog
+        <h2>（一个日历弹框小组件）</h2>
+    </header>
+    <h3>
+        引入
+    </h3>
+    <p>
+        首先你需要通过命令行安装，就像这样：
+    </p>
+    <pre>npm install --save calendar-dialog</pre>
+    <p>
+        安装好了以后，引入即可：
+    </p>
+    <pre>import CalendarDialog from 'calendar-dialog';</pre>
+    <p>
+        当然，你也可以通过CDN的方式引入：
+    </p>
+    <pre>&lt;script src='https://cdn.jsdelivr.net/npm/calendar-dialog@0'&gt;&lt;/script&gt;</pre>
+    <h3>
+        语法
+    </h3>
+    <pre>CalendarDialog({
+    year: number,
+    month: number,
+    day: number
+}).then(function (time) {
+
+    console.log(time);
+
+});</pre>
+    <h3>
+        例子
+    </h3>
+    <p>
+        让我们举个例子：右边这个输入框就是运行的效果：
+        <input type="text" onclick="doit()" value='2021-12-1' id='input' readonly>
+        （你可以点击一下试试效果）。
+    </p>
+    <p>
+        你直接调用上面的选择方法即可：
+    </p>
+    <pre>CalendarDialog({
+    year: 2021,
+    month: 12,
+    day: 1
+}).then(function (time) {
+    document.getElementById('input').value = time.year + "-" + time.month + "-" + time.day;
+});</pre>
+    <script>
+
+        function doit() {
+
+            CalendarDialog({
+                year: 2021,
+                month: 12,
+                day: 1
+            }).then(function (time) {
+                document.getElementById('input').value = time.year + "-" + time.month + "-" + time.day;
+            });
+
+        }
+
+    </script>
 
 </body>
 

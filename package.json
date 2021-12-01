@@ -1,0 +1,39 @@
+{
+  "name": "calendar-dialog",
+  "version": "0.1.0-alpha.0",
+  "description": "一个日历弹框，可以通过此日历组件选择日期、时间和标记日程等，支持多种主体，可配置化的设计思想；代码采用模块化开发，易于理解，可以很方便的进行二次开发。 ",
+  "main": "dist/calendar-dialog.min.js",
+  "scripts": {
+    "start": "npm install && npm run dev",
+    "dev": "rollup --config rollup.config.js -i ./src/index.js -o ./docs/calendar-dialog.js --watch",
+    "build": "nodejs -d dist && rollup --config rollup.config.js && terser ./dist/calendar-dialog.js -o ./dist/calendar-dialog.min.js && nodejs --config nodejs.config.js && nodejs -c ./dist/calendar-dialog.js ./docs/calendar-dialog.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hai2007/calendar-dialog.git"
+  },
+  "keywords": [
+    "calendar",
+    "dialog"
+  ],
+  "author": "你好2007",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/hai2007/calendar-dialog/issues"
+  },
+  "homepage": "https://github.com/hai2007/calendar-dialog#readme",
+  "devDependencies": {
+    "@babel/core": "^7.0.0",
+    "@babel/preset-env": "^7.0.0",
+    "@hai2007/nodejs": "^2.0.1",
+    "@rollup/plugin-babel": "^5.2.1",
+    "rollup": "^1.17.0",
+    "rollup-plugin-commonjs": "^10.0.1",
+    "rollup-plugin-node-resolve": "^5.2.0",
+    "terser": "^4.1.2"
+  },
+  "dependencies": {
+    "@hai2007/browser": "^0.2.0",
+    "@hai2007/tool": "^1.0.0"
+  }
+}

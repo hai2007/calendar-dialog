@@ -7,6 +7,7 @@ export default function () {
 
     styleElement.innerHTML = scssToCss(`
         #calendar-dialog{
+            font-family: serif;
             .header {
                 text-align: center;
                 margin-bottom: 10px;
@@ -16,10 +17,13 @@ export default function () {
                     cursor: pointer;
                     height: 20px;
                     vertical-align: top;
+                    font-weight: 800;
+                    font-size: 20px;
+                    line-height: 20px;
                 }
                 &>h3 {
                     display: inline-block;
-                    width: 150px;
+                    width: 180px;
                     cursor: pointer;
                 }
             }
@@ -36,6 +40,10 @@ export default function () {
             }
             [tag]{
                 cursor: pointer;
+                &:hover{
+                    background-color: #f1ecec;
+                    color: white;
+                }
             }
             .items{
                 &.dayview>span {
@@ -44,11 +52,20 @@ export default function () {
 
                 &.monthview>span {
                     width: 60px;
+                    line-height: 60px;
+                    height: 60px;
                 }
 
                 &.yearview>span {
                     width: 80px;
+                    line-height: 60px;
+                    height: 60px;
                 }
+            }
+        }
+        #calendar-dialog_close{
+            &:hover{
+                color: #211e1e !important;
             }
         }
     `);

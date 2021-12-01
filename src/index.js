@@ -38,10 +38,21 @@ let CalendarDialog = function (initDate) {
                 padding:10px;
                 width:265px;
             '></div>
+            <div id='calendar-dialog_close' style='
+                text-align: center;
+                padding: 10px;
+                background-color: #f1ecec;
+                color: #9e9e9e;
+                cursor: pointer;
+            '>关闭</div>
         </div>`);
         dialog = document.getElementById('calendar-dialog');
 
         dragdrop();
+
+        xhtml.bind(document.getElementById('calendar-dialog_close'), 'click', () => {
+            dialog.style.display = 'none';
+        });
     }
 
     dialog.style.display = 'block';

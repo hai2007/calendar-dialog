@@ -1,6 +1,8 @@
 import { calcYears, calcDaysArray } from './calc';
 import xhtml from '@hai2007/browser/xhtml';
 
+let months = ['一', '二', '三', '四', '五', '六', '七', '八', '九', '十', '十一', '十二'];
+
 // 显示选择天视图
 export function selectDayView(year, month) {
 
@@ -24,7 +26,7 @@ export function selectDayView(year, month) {
     let template = `
 <div class="header">
     <button>&lt;</button>
-    <h3>${year}年${month}月</h3>
+    <h3>${months[month - 1]}月 ${year}</h3>
     <button>&gt;</button>
 </div>
 <div class="title"><span>一</span><span>二</span><span>三</span><span>四</span><span>五</span><span>六</span><span>日</span></div>
@@ -69,7 +71,7 @@ export function selectMonthView(year) {
 
     let curTemplate = "";
     for (let i = 1; i <= 12; i++) {
-        curTemplate += "<span tag='" + i + "'>" + i + "月</span>";
+        curTemplate += "<span tag='" + i + "'>" + months[i - 1] + "月</span>";
     }
 
     let template = `
@@ -120,13 +122,13 @@ export function selectYearView(year) {
     let minYears = years[0];
     let maxYears = years[years.length - 1];
 
-    let curTemplate = "<span class='gray'>" + (minYears - 1) + "</span>";
+    let curTemplate = "<span class='gray'>" + (minYears - 1) + "年</span>";
 
     for (let i = 0; i < years.length; i++) {
         curTemplate += "<span tag='" + years[i] + "'>" + years[i] + "年</span>";
     }
 
-    curTemplate += "<span class='gray'>" + (maxYears + 1) + "</span>";
+    curTemplate += "<span class='gray'>" + (maxYears + 1) + "年</span>";
 
     let template = `
 <div class="header">

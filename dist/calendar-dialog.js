@@ -4,12 +4,12 @@
  *
  * author 你好2007 < https://hai2007.gitee.io/sweethome >
  *
- * version 0.1.0
+ * version 0.1.1
  *
  * Copyright (c) 2021 hai2007 走一步，再走一步。
  * Released under the MIT license
  *
- * Date:Wed Dec 01 2021 14:43:47 GMT+0800 (中国标准时间)
+ * Date:Wed Dec 01 2021 17:56:17 GMT+0800 (中国标准时间)
  */
 (function () {
   'use strict';
@@ -381,6 +381,8 @@
     return daysArray;
   }
 
+  var months = ['一', '二', '三', '四', '五', '六', '七', '八', '九', '十', '十一', '十二']; // 显示选择天视图
+
   function selectDayView(year, month) {
     var daysArray = calcDaysArray(year, month);
     var preTemplate = "";
@@ -401,7 +403,7 @@
       nextTemplate += "<span class='gray'>" + daysArray.next[_i2] + "</span>";
     }
 
-    var template = "\n<div class=\"header\">\n    <button>&lt;</button>\n    <h3>".concat(year, "\u5E74").concat(month, "\u6708</h3>\n    <button>&gt;</button>\n</div>\n<div class=\"title\"><span>\u4E00</span><span>\u4E8C</span><span>\u4E09</span><span>\u56DB</span><span>\u4E94</span><span>\u516D</span><span>\u65E5</span></div>\n<div class=\"items dayview\">").concat(preTemplate).concat(curTemplate).concat(nextTemplate, "</div>");
+    var template = "\n<div class=\"header\">\n    <button>&lt;</button>\n    <h3>".concat(months[month - 1], "\u6708 ").concat(year, "</h3>\n    <button>&gt;</button>\n</div>\n<div class=\"title\"><span>\u4E00</span><span>\u4E8C</span><span>\u4E09</span><span>\u56DB</span><span>\u4E94</span><span>\u516D</span><span>\u65E5</span></div>\n<div class=\"items dayview\">").concat(preTemplate).concat(curTemplate).concat(nextTemplate, "</div>");
     document.getElementById('calendar-dialog_view').innerHTML = template;
     var viewDom = document.getElementById('calendar-dialog_view'); // 前一个
 
@@ -434,7 +436,7 @@
     var curTemplate = "";
 
     for (var i = 1; i <= 12; i++) {
-      curTemplate += "<span tag='" + i + "'>" + i + "月</span>";
+      curTemplate += "<span tag='" + i + "'>" + months[i - 1] + "月</span>";
     }
 
     var template = "\n<div class=\"header\">\n    <button>&lt;</button>\n    <h3>".concat(year, "\u5E74</h3>\n    <button>&gt;</button>\n</div>\n<div class=\"items monthview\">").concat(curTemplate, "</div>");
@@ -466,13 +468,13 @@
     var years = calcYears(year);
     var minYears = years[0];
     var maxYears = years[years.length - 1];
-    var curTemplate = "<span class='gray'>" + (minYears - 1) + "</span>";
+    var curTemplate = "<span class='gray'>" + (minYears - 1) + "年</span>";
 
     for (var i = 0; i < years.length; i++) {
       curTemplate += "<span tag='" + years[i] + "'>" + years[i] + "年</span>";
     }
 
-    curTemplate += "<span class='gray'>" + (maxYears + 1) + "</span>";
+    curTemplate += "<span class='gray'>" + (maxYears + 1) + "年</span>";
     var template = "\n<div class=\"header\">\n    <button>&lt;</button>\n    <h3>".concat(minYears, "\u5E74 ~ ").concat(maxYears, "\u5E74</h3>\n    <button>&gt;</button>\n</div>\n<div class=\"items yearview\">").concat(curTemplate, "</div>");
     document.getElementById('calendar-dialog_view').innerHTML = template;
     var viewDom = document.getElementById('calendar-dialog_view'); // 前一个
@@ -720,7 +722,7 @@
   function useStyle () {
     var styleElement = document.createElement('style');
     var head = document.head || document.getElementsByTagName('head')[0];
-    styleElement.innerHTML = scssToCss("\n        #calendar-dialog{\n            .header {\n                text-align: center;\n                margin-bottom: 10px;\n                &>button {\n                    border: none;\n                    background-color: transparent;\n                    cursor: pointer;\n                    height: 20px;\n                    vertical-align: top;\n                }\n                &>h3 {\n                    display: inline-block;\n                    width: 150px;\n                    cursor: pointer;\n                }\n            }\n            .title>span,\n            .items>span {\n                display: inline-block;\n                width: 35px;\n                height: 35px;\n                line-height: 35px;\n                text-align: center;\n            }\n            .gray {\n                color: #c2bbbb;\n            }\n            [tag]{\n                cursor: pointer;\n            }\n            .items{\n                &.dayview>span {\n                    width: 35px;\n                }\n\n                &.monthview>span {\n                    width: 60px;\n                }\n\n                &.yearview>span {\n                    width: 80px;\n                }\n            }\n        }\n    ");
+    styleElement.innerHTML = scssToCss("\n        #calendar-dialog{\n            font-family: serif;\n            .header {\n                text-align: center;\n                margin-bottom: 10px;\n                &>button {\n                    border: none;\n                    background-color: transparent;\n                    cursor: pointer;\n                    height: 20px;\n                    vertical-align: top;\n                    font-weight: 800;\n                    font-size: 20px;\n                    line-height: 20px;\n                }\n                &>h3 {\n                    display: inline-block;\n                    width: 180px;\n                    cursor: pointer;\n                }\n            }\n            .title>span,\n            .items>span {\n                display: inline-block;\n                width: 35px;\n                height: 35px;\n                line-height: 35px;\n                text-align: center;\n            }\n            .gray {\n                color: #c2bbbb;\n            }\n            [tag]{\n                cursor: pointer;\n                &:hover{\n                    background-color: #f1ecec;\n                    color: white;\n                }\n            }\n            .items{\n                &.dayview>span {\n                    width: 35px;\n                }\n\n                &.monthview>span {\n                    width: 60px;\n                    line-height: 60px;\n                    height: 60px;\n                }\n\n                &.yearview>span {\n                    width: 80px;\n                    line-height: 60px;\n                    height: 60px;\n                }\n            }\n        }\n        #calendar-dialog_close{\n            &:hover{\n                color: #211e1e !important;\n            }\n        }\n    ");
     styleElement.setAttribute('type', 'text/css');
     head.appendChild(styleElement);
   }
@@ -732,9 +734,12 @@
     if (!dialog) {
       useStyle(); // 准备好模板后追加到页面中
 
-      xhtml.append(document.body, "<div id='calendar-dialog'\n                style='\n                position: fixed;\n                box-shadow: 0 0 7px 1px #9393a0;\n                border-radius: 5px;\n                background-color: white;\n                user-select: none;\n            '>\n            <div id='calendar-dialog_move' style='\n                font-size: 25px;\n                text-align: center;\n                cursor: move;\n                border-radius: 5px 5px 0 0;\n                line-height: 30px;\n                background-color: #f1ecec;\n                color: #938e8e;\n                padding: 10px 0;\n                margin-bottom: 10px;\n                font-weight: 800;\n            '>\u65E5\u5386</div>\n            <div id='calendar-dialog_view' style='\n                padding:10px;\n                width:265px;\n            '></div>\n        </div>");
+      xhtml.append(document.body, "<div id='calendar-dialog'\n                style='\n                position: fixed;\n                box-shadow: 0 0 7px 1px #9393a0;\n                border-radius: 5px;\n                background-color: white;\n                user-select: none;\n            '>\n            <div id='calendar-dialog_move' style='\n                font-size: 25px;\n                text-align: center;\n                cursor: move;\n                border-radius: 5px 5px 0 0;\n                line-height: 30px;\n                background-color: #f1ecec;\n                color: #938e8e;\n                padding: 10px 0;\n                margin-bottom: 10px;\n                font-weight: 800;\n            '>\u65E5\u5386</div>\n            <div id='calendar-dialog_view' style='\n                padding:10px;\n                width:265px;\n            '></div>\n            <div id='calendar-dialog_close' style='\n                text-align: center;\n                padding: 10px;\n                background-color: #f1ecec;\n                color: #9e9e9e;\n                cursor: pointer;\n            '>\u5173\u95ED</div>\n        </div>");
       dialog = document.getElementById('calendar-dialog');
       dragdrop();
+      xhtml.bind(document.getElementById('calendar-dialog_close'), 'click', function () {
+        dialog.style.display = 'none';
+      });
     }
 
     dialog.style.display = 'block';
